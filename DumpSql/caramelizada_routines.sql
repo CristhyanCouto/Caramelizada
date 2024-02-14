@@ -22,6 +22,72 @@
 --
 -- Dumping routines for database 'caramelizada'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `animes_curta_minha_nota` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `animes_curta_minha_nota`()
+BEGIN
+        SELECT
+            AN.IDANIME AS "ID",
+            AN.NOME_ANIME AS "Nome do Anime",
+            DATE_FORMAT(AN.DATA_LANCAMENTO, "%Y") AS "Lançamento",
+            AE.NOME_ATUAL_ESTADO AS "Status",
+            GA.NOME_GENERO AS "Gênero",
+            GB.NOME_GENERO AS "Gênero",
+            AN.CLASSIFICACAO_ETARIA AS "PG",
+            AN.MINHA_NOTA AS "Minha Nota"
+        FROM ANIMES AN
+        LEFT JOIN ATUAL_ESTADO AE ON AN.ATUAL_ESTADO = AE.IDATUAL_ESTADO
+        LEFT JOIN GENEROS GA ON AN.GENERO_ANIME1 = GA.IDGENERO
+        LEFT JOIN GENEROS GB ON AN.GENERO_ANIME2 = GB.IDGENERO
+        WHERE AE.IDATUAL_ESTADO = 8
+        ORDER BY MINHA_NOTA DESC;
+    END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `animes_longa_minha_nota` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `animes_longa_minha_nota`()
+BEGIN
+        SELECT
+            AN.IDANIME AS "ID",
+            AN.NOME_ANIME AS "Nome do Anime",
+            DATE_FORMAT(AN.DATA_LANCAMENTO, "%Y") AS "Lançamento",
+            AE.NOME_ATUAL_ESTADO AS "Status",
+            GA.NOME_GENERO AS "Gênero",
+            GB.NOME_GENERO AS "Gênero",
+            AN.CLASSIFICACAO_ETARIA AS "PG",
+            AN.MINHA_NOTA AS "Minha Nota"
+        FROM ANIMES AN
+        LEFT JOIN ATUAL_ESTADO AE ON AN.ATUAL_ESTADO = AE.IDATUAL_ESTADO
+        LEFT JOIN GENEROS GA ON AN.GENERO_ANIME1 = GA.IDGENERO
+        LEFT JOIN GENEROS GB ON AN.GENERO_ANIME2 = GB.IDGENERO
+        WHERE AE.IDATUAL_ESTADO = 7
+        ORDER BY MINHA_NOTA DESC;
+    END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `animes_minha_nota` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -41,13 +107,14 @@ BEGIN
             AE.NOME_ATUAL_ESTADO AS "Status",
             GA.NOME_GENERO AS "Gênero",
             GB.NOME_GENERO AS "Gênero",
+            AN.CLASSIFICACAO_ETARIA AS "PG",
             AN.QUANTIDADE_EPISODIOS AS "Número de Episódios",
             AN.MINHA_NOTA AS "Minha Nota"
         FROM ANIMES AN
         LEFT JOIN ATUAL_ESTADO AE ON AN.ATUAL_ESTADO = AE.IDATUAL_ESTADO
         LEFT JOIN GENEROS GA ON AN.GENERO_ANIME1 = GA.IDGENERO
         LEFT JOIN GENEROS GB ON AN.GENERO_ANIME2 = GB.IDGENERO
-        WHERE AE.IDATUAL_ESTADO <> 7
+        WHERE AE.IDATUAL_ESTADO <> 7 AND AE.IDATUAL_ESTADO <> 8
         ORDER BY MINHA_NOTA DESC;
     END ;;
 DELIMITER ;
@@ -70,7 +137,7 @@ BEGIN
         SELECT
             F.IDFILME AS "ID",
             F.NOME_FILME AS "Nome do Filme",
-            F.DATA_LANCAMENTO AS "Lançado em",
+            DATE_FORMAT(F.DATA_LANCAMENTO,"%Y") AS "Lançamento",
             D.NOME_DIRETOR AS "Diretor",
             AA.NOME_ATOR AS "Atores",
             IFNULL(AB.NOME_ATOR, "****") AS "Atores",
@@ -106,4 +173,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-14 11:03:21
+-- Dump completed on 2024-02-14 14:43:55

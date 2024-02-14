@@ -16,35 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `autores`
+-- Table structure for table `plataformas`
 --
 
-DROP TABLE IF EXISTS `autores`;
+DROP TABLE IF EXISTS `plataformas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `autores` (
-  `IDAUTOR` int NOT NULL AUTO_INCREMENT,
-  `NOME_AUTOR` varchar(1000) DEFAULT NULL,
-  `PAIS_AUTOR` int DEFAULT NULL,
-  `ATUAL_ESTADO` int DEFAULT NULL,
-  `NASCIMENTO` date DEFAULT NULL,
-  `FALECIMENTO` date DEFAULT NULL,
-  PRIMARY KEY (`IDAUTOR`),
-  KEY `FK_PAIS_AUTOR` (`PAIS_AUTOR`),
-  KEY `FK_ATUAL_ESTADO_AUTOR` (`ATUAL_ESTADO`),
-  CONSTRAINT `FK_ATUAL_ESTADO_AUTOR` FOREIGN KEY (`ATUAL_ESTADO`) REFERENCES `atual_estado` (`IDATUAL_ESTADO`),
-  CONSTRAINT `FK_PAIS_AUTOR` FOREIGN KEY (`PAIS_AUTOR`) REFERENCES `paises` (`IDPAIS`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `plataformas` (
+  `IDPLATAFORMA` int NOT NULL AUTO_INCREMENT,
+  `NOME_PLATAFORMA` varchar(1000) DEFAULT NULL,
+  `LANCAMENTO_PLATAFORMA` date DEFAULT NULL,
+  PRIMARY KEY (`IDPLATAFORMA`)
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `autores`
+-- Dumping data for table `plataformas`
 --
 
-LOCK TABLES `autores` WRITE;
-/*!40000 ALTER TABLE `autores` DISABLE KEYS */;
-INSERT INTO `autores` VALUES (1,'Stephen King',70,1,'1947-09-21',NULL),(2,'Anton Gill - Oliver Bowden',173,1,'1948-10-22',NULL),(3,'Mark Manson',70,1,'1984-03-09',NULL),(4,'Eduardo Ferraz',61,1,NULL,NULL),(5,'Douglas Adams',173,2,'1952-03-11','2001-05-11');
-/*!40000 ALTER TABLE `autores` ENABLE KEYS */;
+LOCK TABLES `plataformas` WRITE;
+/*!40000 ALTER TABLE `plataformas` DISABLE KEYS */;
+INSERT INTO `plataformas` VALUES (1,'PC','1962-02-14'),(2,'MAC','2001-03-24'),(3,'Linux','1991-10-05'),(4,'Playstation','1994-12-03'),(5,'Playstation 2','2004-11-05'),(6,'Playstation 3','2006-11-11'),(7,'Playstation 4','2013-11-15'),(8,'Playstation 5','2020-11-12'),(9,'PSP','2004-12-12'),(10,'PS Vita','2011-12-17'),(11,'Xbox','2001-11-15'),(12,'Xbox 360','2005-11-22'),(13,'Xbox One','2013-11-22'),(14,'Xbox Series','2020-11-10'),(15,'Master System','1987-08-01'),(16,'Nintendo 64','1996-09-29'),(17,'Dreamcast','1998-11-27'),(18,'GameCube','2001-09-14'),(19,'NES','1985-10-18'),(20,'Wii U','2012-11-18'),(21,'Mega Drive','1989-08-14'),(22,'Saturn','1994-11-22'),(23,'Nintendo 3DS','2011-02-26'),(24,'Game Boy Advance','2001-06-11'),(25,'Wii','2006-11-19'),(26,'Super Nintendo','1990-11-21'),(27,'Nintendo DS','2004-11-21');
+/*!40000 ALTER TABLE `plataformas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-14 11:03:19
+-- Dump completed on 2024-02-14 14:43:54

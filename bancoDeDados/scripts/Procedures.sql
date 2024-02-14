@@ -47,6 +47,7 @@ CREATE PROCEDURE animes_minha_nota()
             AE.NOME_ATUAL_ESTADO AS "Status",
             GA.NOME_GENERO AS "Gênero",
             GB.NOME_GENERO AS "Gênero",
+            AN.CLASSIFICACAO_ETARIA AS "PG",
             AN.QUANTIDADE_EPISODIOS AS "Número de Episódios",
             AN.MINHA_NOTA AS "Minha Nota"
         FROM ANIMES AN
@@ -72,6 +73,7 @@ CREATE PROCEDURE animes_longa_minha_nota()
             AE.NOME_ATUAL_ESTADO AS "Status",
             GA.NOME_GENERO AS "Gênero",
             GB.NOME_GENERO AS "Gênero",
+            AN.CLASSIFICACAO_ETARIA AS "PG",
             AN.MINHA_NOTA AS "Minha Nota"
         FROM ANIMES AN
         LEFT JOIN ATUAL_ESTADO AE ON AN.ATUAL_ESTADO = AE.IDATUAL_ESTADO
@@ -96,6 +98,7 @@ CREATE PROCEDURE animes_curta_minha_nota()
             AE.NOME_ATUAL_ESTADO AS "Status",
             GA.NOME_GENERO AS "Gênero",
             GB.NOME_GENERO AS "Gênero",
+            AN.CLASSIFICACAO_ETARIA AS "PG",
             AN.MINHA_NOTA AS "Minha Nota"
         FROM ANIMES AN
         LEFT JOIN ATUAL_ESTADO AE ON AN.ATUAL_ESTADO = AE.IDATUAL_ESTADO

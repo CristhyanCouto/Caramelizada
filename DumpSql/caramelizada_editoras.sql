@@ -16,27 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `atual_estado`
+-- Table structure for table `editoras`
 --
 
-DROP TABLE IF EXISTS `atual_estado`;
+DROP TABLE IF EXISTS `editoras`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `atual_estado` (
-  `IDATUAL_ESTADO` int NOT NULL AUTO_INCREMENT,
-  `NOME_ATUAL_ESTADO` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`IDATUAL_ESTADO`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `editoras` (
+  `IDEDITORA` int NOT NULL AUTO_INCREMENT,
+  `NOME_EDITORA` varchar(1000) DEFAULT NULL,
+  `PAIS_EDITORA` int DEFAULT NULL,
+  `FUNDADA` date DEFAULT NULL,
+  PRIMARY KEY (`IDEDITORA`),
+  KEY `FK_PAIS_EDITORA` (`PAIS_EDITORA`),
+  CONSTRAINT `FK_PAIS_EDITORA` FOREIGN KEY (`PAIS_EDITORA`) REFERENCES `paises` (`IDPAIS`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `atual_estado`
+-- Dumping data for table `editoras`
 --
 
-LOCK TABLES `atual_estado` WRITE;
-/*!40000 ALTER TABLE `atual_estado` DISABLE KEYS */;
-INSERT INTO `atual_estado` VALUES (1,'Vivo'),(2,'Falecido'),(3,'Finalizado'),(4,'Em Lançamento'),(5,'Cancelado'),(6,'Em Espera'),(7,'Filme/Anime');
-/*!40000 ALTER TABLE `atual_estado` ENABLE KEYS */;
+LOCK TABLES `editoras` WRITE;
+/*!40000 ALTER TABLE `editoras` DISABLE KEYS */;
+INSERT INTO `editoras` VALUES (1,'Suma',NULL,NULL),(2,'Saida de Emergência',NULL,NULL),(3,'Intrínseca',NULL,NULL),(4,'Sextante',NULL,NULL),(5,'Editora Arqueiro',NULL,NULL),(6,'Planeta Estrategia',NULL,NULL);
+/*!40000 ALTER TABLE `editoras` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-02-14 11:03:18
+-- Dump completed on 2024-02-14 14:43:53
