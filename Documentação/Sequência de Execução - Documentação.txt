@@ -1,0 +1,65 @@
+	• 0.0 - Instalação Resumida:
+		○ 0.1 - Dentro do arquivo SQL "Resumido", está a instalação resumida (Ctrl C + Ctrl V), abaixo segue
+				a instalação passo a passo para intendimento do processo.
+	• 1.0 - Database:
+		○ 1.1 - Criação database.
+	• 2.0 - Generos:
+		○ 2.1 - Criação tabela GENEROS.
+		○ 2.2 - Adição de constraints.
+			§ Obs: Os IDS recebem auto_increment através dos constraints de geração de chave primária.
+	• 3.0 - Paises:
+		○ 3.1 - Criação tabela PAISES.
+		○ 3.2 - Adição de constraints.
+		○ 3.3 - Inserts de valores com todos os países separados por continente.
+	• 4.0 - AtualEstado:
+		○ 4.1 - Criação tabela ATUAL_ESTADO.
+			§ Obs: Essa tabela serve para identificar os status do produto ou do profissional.
+		○ 4.2 - Adição de constraints.
+	• 5.0 - Atores:
+		○ 5.1 - Criação tabela ATORES.
+		○ 5.2 - Adição de constraints.
+			§ Obs: A partir daqui já começam as dependências com chave estrangeira.
+		○ 5.3 - A adição de valores estará separada nas páginas de insert.
+	• 6.0 - Autores:
+		○ 6.1 - Criação tabela AUTORES.
+		○ 6.2 - Adição de constraints.
+	• 7.0 - Diretores:
+		○ 7.1 - Criação tabela DIRETORES.
+		○ 7.2 - Adição de constraints.
+	• 8.0 - Editoras:
+		○ 8.1 - Criação tabela EDITORAS.
+		○ 8.2 - Adição de constraints.
+	• 9.0 - Estudios: (Tabela de estúdios de jogos.)
+		○ 9.1 - Criação tabela ESTUDIOS.
+		○ 9.2 - Adição de constraints.
+	• 10.0 - Plataformas: (Tabela de plataformas de jogos.)
+		○ 10.1 - Criação tabela PLATAFORMAS.
+		○ 10.2 - Adição de constraints.
+	• 11.0 - Produtoras:
+		○ 11.1 - Criação tabela PRODUTORAS.
+		○ 11.2 - Adição de constraints.
+	
+A partir daqui começa a criação das tabelas de mídias com dois tipos de dependências.
+
+	• 12.0 - Animes:
+		○ 12.1 - Criação tabela ANIMES.
+		○ 12.2 - Adição de constraints.
+	• 13.0 - Filmes:
+		○ 13.1 - Criação tabela FILMES.
+		○ 13.2 - Adição de constraints.
+	• 14.0 - Jogos:
+		○ 14.1 - Criação tabela JOGOS.
+		○ 14.2 - Adição de constraints.
+	• 15.0 - Livros:
+		○ 15.1 - Criação tabela LIVROS.
+		○ 15.2 - Adição de constraints.
+	• 16.0 - Series:
+		○ 16.1 - Criação tabela SERIES.
+		○ 16.2 - Adição de constraints.
+
+-----OBSERVAÇÕES GERAIS-----
+DIAGRAMA - O diagrama sobre as dependências e a estrutura das tabelas estão em um arquivo .jpg dentro da pasta "Documentação".
+
+INSERTS - Os inserts estão no script Inserts, os mesmos separados por tabelas, deixo uma quantidade limitada de inserts via código, pois eu os faço via workbench.
+
+PROCEDURES - Os procedures estão no script Procedures, está explicado o que cada procedure deve realizar baseado nos inserts via código (Não esqueça de alterar o DELIMITER).
