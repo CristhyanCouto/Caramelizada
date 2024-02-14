@@ -108,3 +108,55 @@ CREATE PROCEDURE animes_curta_minha_nota()
         ORDER BY MINHA_NOTA DESC;
     END
 $
+
+--JOGOS_MINHA_NOTA--
+/*SEPARA ALGUMAS INFORMAÇÕES DE JOGOS BASEADOS NA MINHA NOTA*/
+
+DELIMITER $
+
+CREATE PROCEDURE jogos_minha_nota()
+    BEGIN
+        SELECT
+            J.IDJOGO AS "ID",
+            J.NOME_JOGO AS "Nome do Jogo",
+            DATE_FORMAT(J.DATA_LANCAMENTO, "%Y") AS "Lançamento",
+            E.NOME_ESTUDIO AS "Estúdio",
+            PL.NOME_PLATAFORMA AS "Plataforma",
+            GA.NOME_GENERO AS "Gênero",
+            IFNULL(GB.NOME_GENERO, "****") AS "Gênero",
+            J.MINHA_NOTA AS "Minha Nota"
+        FROM JOGOS J
+        LEFT JOIN ESTUDIOS E ON J.ESTUDIO = E.IDESTUDIO
+        LEFT JOIN GENEROS GA ON J.GENERO_JOGO1 = GA.IDGENERO
+        LEFT JOIN GENEROS GB ON J.GENERO_JOGO2 = GB.IDGENERO
+        LEFT JOIN PLATAFORMAS PL ON J.PLATAFORMA = PL.IDPLATAFORMA
+        ORDER BY MINHA_NOTA DESC;
+    END
+$
+
+--JOGOS_MULTIPLAYER_LOCAL--
+/*MOSTRA APENAS JOGOS QUE POSSUEM MULTIPLAYER LOCAL*/
+
+DELIMITER $
+
+CREATE PROCEDURE jogos_multiplayer_local()
+    BEGIN
+        SELECT
+            J.IDJOGO AS "ID",
+            J.NOME_JOGO AS "Nome do Jogo",
+            DATE_FORMAT(J.DATA_LANCAMENTO, "%Y") AS "Lançamento",
+            E.NOME_ESTUDIO AS "Estúdio",
+            PL.NOME_PLATAFORMA AS "Plataforma",
+            GA.NOME_GENERO AS "Gênero",
+            IFNULL(GB.NOME_GENERO, "****") AS "Gênero",
+            J.MULTIPLAYER_LOCAL AS "Multiplayer Local",
+            J.MINHA_NOTA AS "Minha Nota"
+        FROM JOGOS J
+        LEFT JOIN ESTUDIOS E ON J.ESTUDIO = E.IDESTUDIO
+        LEFT JOIN GENEROS GA ON J.GENERO_JOGO1 = GA.IDGENERO
+        LEFT JOIN GENEROS GB ON J.GENERO_JOGO2 = GB.IDGENERO
+        LEFT JOIN PLATAFORMAS PL ON J.PLATAFORMA = PL.IDPLATAFORMA
+        WHERE J.MULTIPLAYER_LOCAL = "Sim"
+        ORDER BY MINHA_NOTA DESC;
+    END
+$
