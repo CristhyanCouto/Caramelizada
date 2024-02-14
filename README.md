@@ -1,0 +1,1 @@
+Banco de dados em SQL para armazenar informações sobre consumido de mídias artisticas, como filmes, jogos, livros, séries e etc, alguns procedures com selects de informações separadas por opinião pessoal sobre as mídias armazenadas.
